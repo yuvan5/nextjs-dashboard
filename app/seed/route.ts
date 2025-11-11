@@ -101,6 +101,10 @@ async function seedRevenue() {
   return insertedRevenue;
 }
 
+async function dropTable(tableName: string) {
+  await sql`DROP TABLE IF EXISTS ${sql(tableName)} CASCADE;`;
+}
+
 export async function GET() {
   try {
     const result = await sql.begin((sql) => [
